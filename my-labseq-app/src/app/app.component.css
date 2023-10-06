@@ -1,5 +1,6 @@
 .div-result
 {
+  margin: auto;
   width: 500px;
   text-align: justify;
   border: 1px solid #ccc;
@@ -8,3 +9,24 @@
   margin-top: 10px;
 }
 
+.page
+{
+  height: 601px;
+  width: 600px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input
+{
+  margin-bottom: 10px;
+}
+button
+{
+  width: 100px;
+
+}
