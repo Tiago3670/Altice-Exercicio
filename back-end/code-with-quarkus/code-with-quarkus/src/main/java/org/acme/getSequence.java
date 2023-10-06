@@ -27,27 +27,30 @@ public class getSequence {
                     .entity("Error: n must be positive")
                     .build();
         }
+        else if (n > 10000) { // n is too large
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Error: n must be less than 10 000")
+                    .build();
+        }
         else // n is positive
         {
-            // return "The value of the sequence at position " + n + " is " + l(n);
-            // String result=l(n).toString();
-            // log.info(result.toString());
+
             BigInteger result = l(n);
-            SequenceResponse response = new SequenceResponse(n, result.toString(0));
+            ResponseFormat response = new ResponseFormat(n, result.toString(0));
             return Response.ok(response).build();
         }
     }
+
     @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-    public class SequenceResponse {
+    public class ResponseFormat { // class for response
         private int n;
         private String value;
     
-        public SequenceResponse(int n, String string) {
+        public ResponseFormat(int n, String string) {
             this.n = n;
             this.value = string;
         }
     
-        // Getters and setters for n and value
     }
 
     public BigInteger l(Integer n) {
@@ -58,7 +61,8 @@ public class getSequence {
             // log.info("Found in history"); 
             return historyMap.get(n); // found in history
         }
-        else if (n == 0) {
+        else 
+        if (n == 0) {
             res=BigInteger.ZERO;
         }
         else if (n == 1) {
@@ -74,9 +78,8 @@ public class getSequence {
         {
            res=l(n-4).add(l(n-3));
         }
-
-        if (historyMap.containsKey(n)==false) {
-                    historyMap.put(n, res);
+        if (historyMap.containsKey(n)==false) { 
+                    historyMap.put(n, res);  // add to history
         }
         
         return res;

@@ -1,0 +1,10 @@
+.div-result
+{
+  width: 500px;
+  text-align: justify;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-wrap: break-word;
+  margin-top: 10px;
+}
+
